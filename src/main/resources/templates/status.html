@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Delivery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item" style="margin-top: 4px">
+                <a class="nav-link"href="/users" th:href="@{/deliver}">Back</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="container text-center border border-light p-5">
+    <div class="form-group">
+        <label for="id">ID</label>
+        <p type="text" readonly id="id" th:text="${result.id}"></p>
+    </div>
+    <div class="form-group">
+        <label for="type">TYPE</label>
+        <p type="text" readonly id="type" th:text="${result.type}"></p>
+    </div>
+    <div class="form-group">
+        <label for="weight">WEIGHT</label>
+        <p type="text" readonly id="weight" th:text="${result.weight}"></p>
+    </div>
+    <div class="form-group">
+        <label for="status">STATUS</label>
+        <p type="text" readonly id="status" th:text="${result.status}"></p>
+    </div>
+    <div class="form-group">
+        <label for="departure">DEPARTURE DATE</label>
+        <p type="text" readonly id="departure" th:text="${result.departureDate}"></p>
+    </div>
+    <div class="form-group">
+        <label for="delivery">DELIVERY DATE</label>
+        <p type="text" readonly id="delivery" th:text="${result.deliveryDate}"></p>
+    </div>
+    <div class="form-group">
+        <label for="user">USER IIN</label>
+        <p type="text" id="user" readonly th:text="${result.userIin}"></p>
+    </div>
+</div>
+</body>
+</html>
