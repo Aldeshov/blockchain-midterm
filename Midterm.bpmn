@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0rbumvm" targetNamespace="http://bpmn.io/schema/bpmn" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="1.0.0">
+  <bpmn:process id="camunda-cloud-quick-start" name="Заказ" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_01ixxea</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_1pkso9b" name="Заказать">
+      <bpmn:incoming>Flow_1g9epwd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ofkznq</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1ofkznq" sourceRef="Activity_1pkso9b" targetRef="Activity_0ztl2rs" />
+    <bpmn:serviceTask id="Activity_0ztl2rs" name="Проверка данных">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Object" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ofkznq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n0cwni</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ydbkrv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0n0cwni" sourceRef="Activity_0ztl2rs" targetRef="Activity_07b65sa" />
+    <bpmn:sequenceFlow id="Flow_01ixxea" sourceRef="StartEvent_1" targetRef="Activity_0fkm4sg" />
+    <bpmn:userTask id="Activity_0fkm4sg" name="Выбрать сорт кофе">
+      <bpmn:incoming>Flow_01ixxea</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g9epwd</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1g9epwd" sourceRef="Activity_0fkm4sg" targetRef="Activity_1pkso9b" />
+    <bpmn:receiveTask id="Activity_07b65sa" name="Выполнение заказа">
+      <bpmn:incoming>Flow_0n0cwni</bpmn:incoming>
+      <bpmn:outgoing>Flow_10wsuz4</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="Flow_1ydbkrv" sourceRef="Activity_0ztl2rs" targetRef="Activity_1ykp96g" />
+    <bpmn:userTask id="Activity_1ykp96g" name="Статус заказа">
+      <bpmn:incoming>Flow_1ydbkrv</bpmn:incoming>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_0h4rr9n">
+      <bpmn:incoming>Flow_10wsuz4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_10wsuz4" sourceRef="Activity_07b65sa" targetRef="Event_0h4rr9n" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="camunda-cloud-quick-start">
+      <bpmndi:BPMNEdge id="Flow_10wsuz4_di" bpmnElement="Flow_10wsuz4">
+        <di:waypoint x="920" y="120" />
+        <di:waypoint x="1002" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ydbkrv_di" bpmnElement="Flow_1ydbkrv">
+        <di:waypoint x="740" y="120" />
+        <di:waypoint x="780" y="120" />
+        <di:waypoint x="780" y="230" />
+        <di:waypoint x="820" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g9epwd_di" bpmnElement="Flow_1g9epwd">
+        <di:waypoint x="350" y="120" />
+        <di:waypoint x="460" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01ixxea_di" bpmnElement="Flow_01ixxea">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="250" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n0cwni_di" bpmnElement="Flow_0n0cwni">
+        <di:waypoint x="740" y="120" />
+        <di:waypoint x="820" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ofkznq_di" bpmnElement="Flow_1ofkznq">
+        <di:waypoint x="560" y="120" />
+        <di:waypoint x="640" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0la99eb_di" bpmnElement="Activity_1pkso9b">
+        <dc:Bounds x="460" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gtbfl3_di" bpmnElement="Activity_0ztl2rs">
+        <dc:Bounds x="640" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_109ty74_di" bpmnElement="Activity_0fkm4sg">
+        <dc:Bounds x="250" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xxy8hl_di" bpmnElement="Activity_07b65sa">
+        <dc:Bounds x="820" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0660cpb_di" bpmnElement="Activity_1ykp96g">
+        <dc:Bounds x="820" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0h4rr9n_di" bpmnElement="Event_0h4rr9n">
+        <dc:Bounds x="1002" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
